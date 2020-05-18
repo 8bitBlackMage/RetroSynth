@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="Ti0Ask" name="NewProject" projectType="guiapp" jucerVersion="5.4.7">
+  <MAINGROUP id="AQHD6Z" name="NewProject">
+    <GROUP id="{5F303953-6275-AB1E-010B-614D3EF699E2}" name="Source">
+      <GROUP id="{DFDB296B-40EE-378B-067D-5FDC1A4914BB}" name="Synth">
+        <GROUP id="{2ED34A6A-6720-CC08-3E7B-C23163870E13}" name="WaveTable">
+          <GROUP id="{3ADD348A-2B7F-9C3B-2DE1-A8F3F6BC2DC6}" name="WaveVoices">
+            <FILE id="IylPp3" name="WaveVoiceNesTri.cpp" compile="1" resource="0"
+                  file="Source/Synthesizer/WaveVoiceNesTri.cpp"/>
+            <FILE id="pYlkmb" name="WaveVoiceNesTri.h" compile="0" resource="0"
+                  file="Source/Synthesizer/WaveVoiceNesTri.h"/>
+          </GROUP>
+          <FILE id="KE0WUr" name="Phasor.cpp" compile="1" resource="0" file="Source/Synthesizer/Phasor.cpp"/>
+          <FILE id="SHjmla" name="Phasor.h" compile="0" resource="0" file="Source/Synthesizer/Phasor.h"/>
+          <FILE id="crWFFo" name="WaveTable.cpp" compile="1" resource="0" file="Source/Synthesizer/WaveTable.cpp"/>
+          <FILE id="Na5Ng5" name="WaveTable.h" compile="0" resource="0" file="Source/Synthesizer/WaveTable.h"/>
+        </GROUP>
+        <FILE id="UpWAVG" name="SynthVoice.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthVoice.cpp"/>
+        <FILE id="IUi4HK" name="SynthVoice.h" compile="0" resource="0" file="Source/Synthesizer/SynthVoice.h"/>
+        <FILE id="ETyXil" name="SynthSound.h" compile="0" resource="0" file="Source/Synthesizer/SynthSound.h"/>
+        <FILE id="efkz9Z" name="SynthSource.h" compile="0" resource="0" file="Source/Synthesizer/SynthSource.h"/>
+        <FILE id="N8uOOo" name="SynthSource.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthSource.cpp"/>
+      </GROUP>
+      <FILE id="kYY261" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="OHJ48v" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="TQcPyU" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2019 targetFolder="Builds/VisualStudio2019">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../Desktop/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2019>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+</JUCERPROJECT>
