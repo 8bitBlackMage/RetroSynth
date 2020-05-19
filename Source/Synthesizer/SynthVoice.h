@@ -17,11 +17,11 @@
 class RetroSynthVoice : public SynthesiserVoice
 {
 public:
-    RetroSynthVoice(WaveVoiceNesTri<float>* wavetable);
+    RetroSynthVoice(WaveVoiceNesTri<float>* wavetable, double samplerate);
     bool canPlaySound(SynthesiserSound*) override;
     void startNote(int MidiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition) override;
     void stopNote(float Veclocity, bool AllowTailOff) override;
-    
+    void setCurrentPlaybackSampleRate(double samplerate) override;
     void pitchWheelMoved(int newValue) override;
     void controllerMoved(int controller, int newvalue) override;
     void renderNextBlock(AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;

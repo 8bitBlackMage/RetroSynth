@@ -13,7 +13,7 @@
 
 
 
-RetroSynthVoice::RetroSynthVoice(WaveVoiceNesTri<float>* wavetable): m_Phasor()
+RetroSynthVoice::RetroSynthVoice(WaveVoiceNesTri<float>* wavetable, double sampleRate): m_Phasor(sampleRate)
 {
     m_Wavetable = wavetable;
 }
@@ -36,6 +36,11 @@ void RetroSynthVoice::stopNote(float Veclocity, bool AllowTailOff)
     m_Envelope.noteOff();
 }
 
+void RetroSynthVoice::setCurrentPlaybackSampleRate(double samplerate)
+{
+    m_Phasor.setSampleRate(samplerate);
+}
+
 void RetroSynthVoice::pitchWheelMoved(int newValue)
 {
 }
@@ -51,8 +56,11 @@ void RetroSynthVoice::renderNextBlock(AudioBuffer<float>& outputBuffer, int star
     float* right = outputBuffer.getWritePointer(1);
     for (int i = 0; i < numSamples; i++)
     {
-        left[i] = m_Wavetable->getSample(m_Phasor.getPhase() * m_Wavetable->getSize());
-        right[i] = m_Wavetable->getSample(m_Phasor.getPhase());
+        float sample = m_Wavetable->getSample( (m_Phasor.getPhase() * m_Wavetable->getSize())  *m_Envelope.getNextSample()
+       );
+        m_Phasor.tick();
+        left[i] += sample;
+        right[i] += sample;
     }
   
 

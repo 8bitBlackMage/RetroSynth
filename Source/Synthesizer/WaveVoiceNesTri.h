@@ -25,6 +25,11 @@ public:
         t incriment = 1.0f / 16.0f;
         t Sample = 0.0f;
         for (size_t i = 0; i < 32; i++) {
+            for (size_t Inc2 = 0; Inc2 < StepSize; Inc2++)
+            {
+             //   DBG(Inc2 + i);
+                m_audioBuffer.at(Inc2 + (i*StepSize)) = (((Sample * 2.0f) - 1.0f)* 0.6f);
+            }
 
             if (i <= 15) {
                 Sample += incriment;
@@ -34,12 +39,7 @@ public:
                 Sample -= incriment;
             }
         
-            for (size_t j = 0; j < StepSize; j++)
-            {
-                
-                              // pushSample(, i + j);
-                m_audioBuffer.at((i + j)) = ((Sample * 2.0f) - 1.0f);
-            }
+
         }
     }
     
