@@ -9,6 +9,9 @@
 */
 #include "JuceHeader.h"
 #include"WaveVoiceNesTri.h"
+#include "WaveVoiceTri.h"
+#include "WaveVoicePulse.h"
+#include "WaveVoiceSine.h"
 #include "SynthVoice.h"
 #pragma once
 
@@ -22,5 +25,5 @@ public:
 private:
     MidiKeyboardState& m_keystate;
     Synthesiser m_synth;
-    WaveVoiceNesTri<float> m_WaveTable;
+    WaveVoiceTri<float> m_WaveTable;
 };

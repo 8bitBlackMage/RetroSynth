@@ -13,7 +13,7 @@
 
 
 
-RetroSynthVoice::RetroSynthVoice(WaveVoiceNesTri<float>* wavetable, double sampleRate): m_Phasor(sampleRate)
+RetroSynthVoice::RetroSynthVoice(Wavetable<float>* wavetable, double sampleRate): m_Phasor(sampleRate)
 {
     m_Wavetable = wavetable;
 }
@@ -56,8 +56,7 @@ void RetroSynthVoice::renderNextBlock(AudioBuffer<float>& outputBuffer, int star
     float* right = outputBuffer.getWritePointer(1);
     for (int i = 0; i < numSamples; i++)
     {
-        float sample = m_Wavetable->getSample( (m_Phasor.getPhase() * m_Wavetable->getSize())  *m_Envelope.getNextSample()
-       );
+        float sample = m_Wavetable->getSample(m_Phasor.getPhase() * m_Wavetable->getSize())   ;
         m_Phasor.tick();
         left[i] += sample;
         right[i] += sample;

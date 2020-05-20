@@ -51,7 +51,8 @@ public:
 
 
 
-        return CubicInterpolate(m_audioBuffer[y1], m_audioBuffer[y2], m_audioBuffer[y3], m_audioBuffer[y4],remain);
+       // return CubicInterpolate(m_audioBuffer[y1], m_audioBuffer[y2], m_audioBuffer[y3], m_audioBuffer[y4],remain);
+        return m_audioBuffer[position];
     }
     void pushSample(t Sample, size_t position)
     {
@@ -76,12 +77,12 @@ protected:
     std::vector<t> m_audioBuffer;
 
 private:
-    double CubicInterpolate(
-        double y0, double y1,
-        double y2, double y3,
-        double mu)
+    t CubicInterpolate(
+        t y0, t y1,
+        t y2, t y3,
+        t mu)
     {
-        double a0, a1, a2, a3, mu2;
+        t a0, a1, a2, a3, mu2;
 
         mu2 = mu * mu;
         a0 = y3 - y2 - y0 + y1;

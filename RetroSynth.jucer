@@ -6,10 +6,15 @@
       <GROUP id="{DFDB296B-40EE-378B-067D-5FDC1A4914BB}" name="Synth">
         <GROUP id="{2ED34A6A-6720-CC08-3E7B-C23163870E13}" name="WaveTable">
           <GROUP id="{3ADD348A-2B7F-9C3B-2DE1-A8F3F6BC2DC6}" name="WaveVoices">
-            <FILE id="IylPp3" name="WaveVoiceNesTri.cpp" compile="1" resource="0"
-                  file="Source/Synthesizer/WaveVoiceNesTri.cpp"/>
             <FILE id="pYlkmb" name="WaveVoiceNesTri.h" compile="0" resource="0"
                   file="Source/Synthesizer/WaveVoiceNesTri.h"/>
+            <FILE id="gzkbBg" name="WaveVoiceNoise.h" compile="0" resource="0"
+                  file="Source/Synthesizer/WaveVoiceNoise.h"/>
+            <FILE id="MmbK9g" name="WaveVoicePulse.h" compile="0" resource="0"
+                  file="Source/Synthesizer/WaveVoicePulse.h"/>
+            <FILE id="bGYctj" name="WaveVoiceSaw.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSaw.h"/>
+            <FILE id="uNFbm7" name="WaveVoiceSine.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSine.h"/>
+            <FILE id="bC3PQV" name="WaveVoiceTri.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceTri.h"/>
           </GROUP>
           <FILE id="KE0WUr" name="Phasor.cpp" compile="1" resource="0" file="Source/Synthesizer/Phasor.cpp"/>
           <FILE id="SHjmla" name="Phasor.h" compile="0" resource="0" file="Source/Synthesizer/Phasor.h"/>

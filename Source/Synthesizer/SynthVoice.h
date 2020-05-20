@@ -11,13 +11,13 @@
 #pragma once
 #include "JuceHeader.h"
 #include "Phasor.h"
-#include "WaveVoiceNesTri.h"
+#include "WaveTable.h"
 
 
 class RetroSynthVoice : public SynthesiserVoice
 {
 public:
-    RetroSynthVoice(WaveVoiceNesTri<float>* wavetable, double samplerate);
+    RetroSynthVoice(Wavetable<float>* wavetable, double samplerate);
     bool canPlaySound(SynthesiserSound*) override;
     void startNote(int MidiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition) override;
     void stopNote(float Veclocity, bool AllowTailOff) override;
@@ -27,7 +27,7 @@ public:
     void renderNextBlock(AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;
 private:
     RetroSynthPhasor m_Phasor;
-    WaveVoiceNesTri<float>* m_Wavetable;
+    Wavetable<float>* m_Wavetable;
     ADSR m_Envelope;
     
 };
