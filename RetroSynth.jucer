@@ -4,6 +4,10 @@
   <MAINGROUP id="AQHD6Z" name="NewProject">
     <GROUP id="{5F303953-6275-AB1E-010B-614D3EF699E2}" name="Source">
       <GROUP id="{DFDB296B-40EE-378B-067D-5FDC1A4914BB}" name="Synth">
+        <GROUP id="{84757935-0CBF-BB73-4152-ADC5E44DBFAB}" name="Filter">
+          <FILE id="Xqbedj" name="BiquadFilter.h" compile="0" resource="0" file="Source/Synthesizer/BiquadFilter.h"/>
+          <FILE id="xKyp9H" name="DelayUnit.h" compile="0" resource="0" file="Source/Synthesizer/DelayUnit.h"/>
+        </GROUP>
         <GROUP id="{2ED34A6A-6720-CC08-3E7B-C23163870E13}" name="WaveTable">
           <GROUP id="{3ADD348A-2B7F-9C3B-2DE1-A8F3F6BC2DC6}" name="WaveVoices">
             <FILE id="pYlkmb" name="WaveVoiceNesTri.h" compile="0" resource="0"

@@ -11,6 +11,7 @@
 #pragma once
 #include "JuceHeader.h"
 #include "Phasor.h"
+#include "BiquadFilter.h"
 #include "WaveTable.h"
 
 
@@ -29,5 +30,5 @@ private:
     RetroSynthPhasor m_Phasor;
     Wavetable<float>* m_Wavetable;
     ADSR m_Envelope;
-    
+    LowPass<float> m_Filter;
 };

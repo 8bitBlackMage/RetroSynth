@@ -51,8 +51,8 @@ public:
 
 
 
-       // return CubicInterpolate(m_audioBuffer[y1], m_audioBuffer[y2], m_audioBuffer[y3], m_audioBuffer[y4],remain);
-        return m_audioBuffer[position];
+        return CubicInterpolate(m_audioBuffer[y1], m_audioBuffer[y2], m_audioBuffer[y3], m_audioBuffer[y4],remain);
+       // return m_audioBuffer[position];
     }
     void pushSample(t Sample, size_t position)
     {

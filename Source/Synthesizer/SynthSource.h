@@ -12,6 +12,7 @@
 #include "WaveVoiceTri.h"
 #include "WaveVoicePulse.h"
 #include "WaveVoiceSine.h"
+#include "WaveVoiceNoise.h"
 #include "SynthVoice.h"
 #pragma once
 
@@ -25,5 +26,5 @@ public:
 private:
     MidiKeyboardState& m_keystate;
     Synthesiser m_synth;
-    WaveVoiceTri<float> m_WaveTable;
+    WaveVoicePulse<float> m_WaveTable;
 };
