@@ -17,13 +17,7 @@ public:
     {
         CreateTable(m_audioBufferSize);
     }
-    ~Wavetable()
-    {
-    }
-
-
-
-
+    ~Wavetable(){}
     t getSample(double position)
     {
         while (position >= m_audioBufferSize)
@@ -66,7 +60,6 @@ public:
     {
 
     }
-
     size_t getSize()
     {
         return m_audioBuffer.size();

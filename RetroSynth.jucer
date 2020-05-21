@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="Ti0Ask" name="NewProject" projectType="guiapp" jucerVersion="5.4.7">
-  <MAINGROUP id="AQHD6Z" name="NewProject">
-    <GROUP id="{5F303953-6275-AB1E-010B-614D3EF699E2}" name="Source">
-      <GROUP id="{DFDB296B-40EE-378B-067D-5FDC1A4914BB}" name="Synth">
-        <GROUP id="{84757935-0CBF-BB73-4152-ADC5E44DBFAB}" name="Filter">
-          <FILE id="Xqbedj" name="BiquadFilter.h" compile="0" resource="0" file="Source/Synthesizer/BiquadFilter.h"/>
-          <FILE id="xKyp9H" name="DelayUnit.h" compile="0" resource="0" file="Source/Synthesizer/DelayUnit.h"/>
+<JUCERPROJECT id="mfyyyC" name="RetroSynth" projectType="audioplug" jucerVersion="5.4.7"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+  <MAINGROUP id="rdqd0a" name="RetroSynth">
+    <GROUP id="{9C469F39-3EA0-E818-A306-1BD02C8DB813}" name="Frontend">
+      <FILE id="aWYRnt" name="OSCcontrol.cpp" compile="1" resource="0" file="Source/OSCcontrol.cpp"/>
+      <FILE id="HxEKQU" name="OSCcontrol.h" compile="0" resource="0" file="Source/OSCcontrol.h"/>
+      <FILE id="gIMHgP" name="VoiceControl.cpp" compile="1" resource="0"
+            file="Source/Frontend/VoiceControl.cpp"/>
+      <FILE id="S7obvG" name="VoiceControl.h" compile="0" resource="0" file="Source/Frontend/VoiceControl.h"/>
+    </GROUP>
+    <GROUP id="{A0C62D19-DADE-84E9-C409-2B0AAB8C25EC}" name="Source">
+      <FILE id="KmDml0" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="Gmem51" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="Mjxnd4" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="M9NARP" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{CECDD6C7-7DBD-CA37-3C15-9D7881FA8AB6}" name="Synthesizer">
+      <GROUP id="{68054251-4011-0278-9D50-D0F0C4C77411}" name="WaveTable">
+        <FILE id="LY4FLg" name="Phasor.cpp" compile="1" resource="0" file="Source/Synthesizer/Phasor.cpp"/>
+        <FILE id="sbWHeH" name="Phasor.h" compile="0" resource="0" file="Source/Synthesizer/Phasor.h"/>
+        <GROUP id="{567FB572-5F1F-3BB3-6658-44E8D99C4025}" name="WaveVoice">
+          <FILE id="GvykjL" name="WaveVoiceNesTri.h" compile="0" resource="0"
+                file="Source/Synthesizer/WaveVoiceNesTri.h"/>
+          <FILE id="O1EDRm" name="WaveVoiceNoise.h" compile="0" resource="0"
+                file="Source/Synthesizer/WaveVoiceNoise.h"/>
+          <FILE id="H91GpR" name="WaveVoicePulse.h" compile="0" resource="0"
+                file="Source/Synthesizer/WaveVoicePulse.h"/>
+          <FILE id="f8XwIM" name="WaveVoiceSaw.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSaw.h"/>
+          <FILE id="E6vOa4" name="WaveVoiceSine.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSine.h"/>
+          <FILE id="xOe9gk" name="WaveVoiceTri.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceTri.h"/>
         </GROUP>
-        <GROUP id="{2ED34A6A-6720-CC08-3E7B-C23163870E13}" name="WaveTable">
-          <GROUP id="{3ADD348A-2B7F-9C3B-2DE1-A8F3F6BC2DC6}" name="WaveVoices">
-            <FILE id="pYlkmb" name="WaveVoiceNesTri.h" compile="0" resource="0"
-                  file="Source/Synthesizer/WaveVoiceNesTri.h"/>
-            <FILE id="gzkbBg" name="WaveVoiceNoise.h" compile="0" resource="0"
-                  file="Source/Synthesizer/WaveVoiceNoise.h"/>
-            <FILE id="MmbK9g" name="WaveVoicePulse.h" compile="0" resource="0"
-                  file="Source/Synthesizer/WaveVoicePulse.h"/>
-            <FILE id="bGYctj" name="WaveVoiceSaw.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSaw.h"/>
-            <FILE id="uNFbm7" name="WaveVoiceSine.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceSine.h"/>
-            <FILE id="bC3PQV" name="WaveVoiceTri.h" compile="0" resource="0" file="Source/Synthesizer/WaveVoiceTri.h"/>
-          </GROUP>
-          <FILE id="KE0WUr" name="Phasor.cpp" compile="1" resource="0" file="Source/Synthesizer/Phasor.cpp"/>
-          <FILE id="SHjmla" name="Phasor.h" compile="0" resource="0" file="Source/Synthesizer/Phasor.h"/>
-          <FILE id="crWFFo" name="WaveTable.cpp" compile="1" resource="0" file="Source/Synthesizer/WaveTable.cpp"/>
-          <FILE id="Na5Ng5" name="WaveTable.h" compile="0" resource="0" file="Source/Synthesizer/WaveTable.h"/>
-        </GROUP>
-        <FILE id="UpWAVG" name="SynthVoice.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthVoice.cpp"/>
-        <FILE id="IUi4HK" name="SynthVoice.h" compile="0" resource="0" file="Source/Synthesizer/SynthVoice.h"/>
-        <FILE id="ETyXil" name="SynthSound.h" compile="0" resource="0" file="Source/Synthesizer/SynthSound.h"/>
-        <FILE id="efkz9Z" name="SynthSource.h" compile="0" resource="0" file="Source/Synthesizer/SynthSource.h"/>
-        <FILE id="N8uOOo" name="SynthSource.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthSource.cpp"/>
+        <FILE id="Q9pXuL" name="WaveTable.cpp" compile="1" resource="0" file="Source/Synthesizer/WaveTable.cpp"/>
+        <FILE id="iVjjDj" name="WaveTable.h" compile="0" resource="0" file="Source/Synthesizer/WaveTable.h"/>
       </GROUP>
-      <FILE id="kYY261" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="OHJ48v" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="TQcPyU" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <GROUP id="{28A82693-7451-2858-A9D6-4050C34726C3}" name="filter">
+        <FILE id="hBjSDo" name="BiquadFilter.h" compile="0" resource="0" file="Source/Synthesizer/BiquadFilter.h"/>
+        <FILE id="DCS7Bl" name="DelayUnit.h" compile="0" resource="0" file="Source/Synthesizer/DelayUnit.h"/>
+      </GROUP>
+      <FILE id="AcASVy" name="SynthSound.h" compile="0" resource="0" file="Source/Synthesizer/SynthSound.h"/>
+      <FILE id="CTkExB" name="SynthSource.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthSource.cpp"/>
+      <FILE id="SEoURA" name="SynthSource.h" compile="0" resource="0" file="Source/Synthesizer/SynthSource.h"/>
+      <FILE id="TALxUt" name="SynthVoice.cpp" compile="1" resource="0" file="Source/Synthesizer/SynthVoice.cpp"/>
+      <FILE id="fpkVHT" name="SynthVoice.h" compile="0" resource="0" file="Source/Synthesizer/SynthVoice.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -44,19 +55,20 @@
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../Desktop/JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../Desktop/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../JUCE/modules"/>
       </MODULEPATHS>
     </VS2019>
   </EXPORTFORMATS>
@@ -64,6 +76,8 @@
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -78,5 +92,5 @@
   <LIVE_SETTINGS>
     <WINDOWS/>
   </LIVE_SETTINGS>
-  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
 </JUCERPROJECT>
