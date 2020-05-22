@@ -20,7 +20,7 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../OSCcontrol.h"
+#include "OSCcontrol.h"
 #include <JuceHeader.h>
 //[/Headers]
 
@@ -43,6 +43,16 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    OSCcontrol* getOSCcontrol1() {
+        return m_OSCControl1.get();
+    }
+    OSCcontrol* getOSCcontrol2() {
+        return m_OSCcontrol2.get();
+    }
+    double getMixSliderValue()
+    {
+        return m_OSCMixerValue;
+    }
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -52,12 +62,13 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    double m_OSCMixerValue;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<OSCcontrol> component;
-    std::unique_ptr<OSCcontrol> component2;
-    std::unique_ptr<Slider> slider;
+    std::unique_ptr<OSCcontrol> m_OSCControl1;
+    std::unique_ptr<OSCcontrol> m_OSCcontrol2;
+    std::unique_ptr<Slider> m_OSCMixer;
 
 
     //==============================================================================

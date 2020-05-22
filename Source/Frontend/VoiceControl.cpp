@@ -32,25 +32,25 @@ VoiceControl::VoiceControl ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    component.reset (new OSCcontrol());
-    addAndMakeVisible (component.get());
-    component->setName ("new component");
+    m_OSCControl1.reset (new OSCcontrol());
+    addAndMakeVisible (m_OSCControl1.get());
+    m_OSCControl1->setName ("OSC Controller 1");
 
-    component->setBounds (8, 24, 640, 150);
+    m_OSCControl1->setBounds (8, 24, 640, 150);
 
-    component2.reset (new OSCcontrol());
-    addAndMakeVisible (component2.get());
-    component2->setName ("new component");
+    m_OSCcontrol2.reset (new OSCcontrol());
+    addAndMakeVisible (m_OSCcontrol2.get());
+    m_OSCcontrol2->setName ("OSC Control 2");
 
-    component2->setBounds (8, 192, 640, 150);
+    m_OSCcontrol2->setBounds (8, 192, 640, 150);
 
-    slider.reset (new Slider ("new slider"));
-    addAndMakeVisible (slider.get());
-    slider->setRange (0, 10, 0);
-    slider->setSliderStyle (Slider::RotaryVerticalDrag);
-    slider->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSCMixer.reset (new Slider ("new slider"));
+    addAndMakeVisible (m_OSCMixer.get());
+    m_OSCMixer->setRange (0, 10, 0);
+    m_OSCMixer->setSliderStyle (Slider::RotaryVerticalDrag);
+    m_OSCMixer->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
 
-    slider->setBounds (680, 104, 150, 150);
+    m_OSCMixer->setBounds (680, 104, 150, 150);
 
 
     //[UserPreSize]
@@ -60,6 +60,8 @@ VoiceControl::VoiceControl ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    m_OSCMixer->onValueChange = [this]() {m_OSCMixerValue = m_OSCMixer->getValue(); };
+
     //[/Constructor]
 }
 
@@ -68,9 +70,9 @@ VoiceControl::~VoiceControl()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    component = nullptr;
-    component2 = nullptr;
-    slider = nullptr;
+    m_OSCControl1 = nullptr;
+    m_OSCcontrol2 = nullptr;
+    m_OSCMixer = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -134,16 +136,17 @@ BEGIN_JUCER_METADATA
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
-  <GENERICCOMPONENT name="new component" id="3d2802861ac69e42" memberName="component"
+  <GENERICCOMPONENT name="OSC Controller 1" id="3d2802861ac69e42" memberName="m_OSCControl1"
                     virtualName="" explicitFocusOrder="0" pos="8 24 640 150" class="OSCcontrol"
                     params=""/>
-  <GENERICCOMPONENT name="new component" id="173f459860a2f5a2" memberName="component2"
+  <GENERICCOMPONENT name="OSC Control 2" id="173f459860a2f5a2" memberName="m_OSCcontrol2"
                     virtualName="" explicitFocusOrder="0" pos="8 192 640 150" class="OSCcontrol"
                     params=""/>
-  <SLIDER name="new slider" id="e6e4e8161ac40fd1" memberName="slider" virtualName=""
-          explicitFocusOrder="0" pos="680 104 150 150" min="0.0" max="10.0"
-          int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox" textBoxEditable="0"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1.0" needsCallback="0"/>
+  <SLIDER name="new slider" id="e6e4e8161ac40fd1" memberName="m_OSCMixer"
+          virtualName="" explicitFocusOrder="0" pos="680 104 150 150" min="0.0"
+          max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
