@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+#include "FilterControl.h"
 //[/Headers]
 
 
@@ -33,7 +34,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class FilterPage  : public Component
+class FilterPage  : public Component,
+                    public ComboBox::Listener
 {
 public:
     //==============================================================================
@@ -46,6 +48,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 
 
@@ -54,6 +57,9 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    std::unique_ptr<FilterControl> m_FilterControl1;
+    std::unique_ptr<FilterControl> m_FilterControl2;
+    std::unique_ptr<ComboBox> m_FilterMode;
 
 
     //==============================================================================

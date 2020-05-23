@@ -17,7 +17,7 @@ RetroSynthAudioProcessorEditor::RetroSynthAudioProcessorEditor (RetroSynthAudioP
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    addAndMakeVisible(m_OSCcontrol);
+    
     addAndMakeVisible(m_keyboardComponent);
     setSize (1024, 768);
 }
@@ -39,6 +39,6 @@ void RetroSynthAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
-    m_OSCcontrol.setBounds(getBounds());
+    
     m_keyboardComponent.setBounds(getBounds().removeFromBottom(150));
 }

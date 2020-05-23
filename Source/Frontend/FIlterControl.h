@@ -33,7 +33,9 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class FilterControl  : public Component
+class FilterControl  : public Component,
+                       public Slider::Listener,
+                       public ComboBox::Listener
 {
 public:
     //==============================================================================
@@ -46,6 +48,8 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 
 
@@ -54,6 +58,9 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    std::unique_ptr<Slider> m_VCF_Cutoff;
+    std::unique_ptr<Slider> m_VCF_Res;
+    std::unique_ptr<ComboBox> comboBox;
 
 
     //==============================================================================
