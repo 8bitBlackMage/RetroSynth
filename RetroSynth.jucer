@@ -4,11 +4,15 @@
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
   <MAINGROUP id="rdqd0a" name="RetroSynth">
     <GROUP id="{9C469F39-3EA0-E818-A306-1BD02C8DB813}" name="Frontend">
+      <FILE id="DPRTCU" name="FilterControl.cpp" compile="1" resource="0"
+            file="Source/Frontend/FilterControl.cpp"/>
+      <FILE id="iUSRqJ" name="FilterControl.h" compile="0" resource="0" file="Source/Frontend/FilterControl.h"/>
+      <FILE id="pRSKdU" name="FilterPage.cpp" compile="1" resource="0" file="Source/Frontend/FilterPage.cpp"/>
+      <FILE id="MGP2Gx" name="FilterPage.h" compile="0" resource="0" file="Source/Frontend/FilterPage.h"/>
       <FILE id="uhBMYX" name="OSCcontrol.cpp" compile="1" resource="0" file="Source/Frontend/OSCcontrol.cpp"/>
       <FILE id="N9RJLU" name="OSCcontrol.h" compile="0" resource="0" file="Source/Frontend/OSCcontrol.h"/>
-      <FILE id="gIMHgP" name="VoiceControl.cpp" compile="1" resource="0"
-            file="Source/Frontend/VoiceControl.cpp"/>
-      <FILE id="S7obvG" name="VoiceControl.h" compile="0" resource="0" file="Source/Frontend/VoiceControl.h"/>
+      <FILE id="gIMHgP" name="OSCPage.cpp" compile="1" resource="0" file="Source/Frontend/OSCPage.cpp"/>
+      <FILE id="S7obvG" name="OSCPage.h" compile="0" resource="0" file="Source/Frontend/OSCPage.h"/>
     </GROUP>
     <GROUP id="{A0C62D19-DADE-84E9-C409-2B0AAB8C25EC}" name="Source">
       <FILE id="KmDml0" name="PluginProcessor.cpp" compile="1" resource="0"

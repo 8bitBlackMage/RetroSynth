@@ -34,12 +34,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class VoiceControl  : public Component
+class OSCPage  : public Component
 {
 public:
     //==============================================================================
-    VoiceControl ();
-    ~VoiceControl() override;
+    OSCPage ();
+    ~OSCPage() override;
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -72,7 +72,7 @@ private:
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VoiceControl)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OSCPage)
 };
 
 //[EndFile] You can add extra defines here...

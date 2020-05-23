@@ -20,14 +20,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "VoiceControl.h"
+#include "OSCPage.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-VoiceControl::VoiceControl ()
+OSCPage::OSCPage ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -56,7 +56,7 @@ VoiceControl::VoiceControl ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (640, 480);
+    setSize (1024, 768);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -65,7 +65,7 @@ VoiceControl::VoiceControl ()
     //[/Constructor]
 }
 
-VoiceControl::~VoiceControl()
+OSCPage::~OSCPage()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -80,7 +80,7 @@ VoiceControl::~VoiceControl()
 }
 
 //==============================================================================
-void VoiceControl::paint (Graphics& g)
+void OSCPage::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -103,7 +103,7 @@ void VoiceControl::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void VoiceControl::resized()
+void OSCPage::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -127,10 +127,10 @@ void VoiceControl::resized()
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="VoiceControl" componentName=""
+<JUCER_COMPONENT documentType="Component" className="OSCPage" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="640" initialHeight="480">
+                 fixedSize="0" initialWidth="1024" initialHeight="768">
   <BACKGROUND backgroundColour="ff505050">
     <TEXT pos="660 252 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Mixer"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"

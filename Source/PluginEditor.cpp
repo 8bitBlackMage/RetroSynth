@@ -40,5 +40,5 @@ void RetroSynthAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     m_OSCcontrol.setBounds(getBounds());
-          m_keyboardComponent.setBounds(getBounds().removeFromBottom(150));
+    m_keyboardComponent.setBounds(getBounds().removeFromBottom(150));
 }

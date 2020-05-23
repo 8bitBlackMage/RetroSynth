@@ -32,35 +32,35 @@ OSCcontrol::OSCcontrol ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    m_OSC1_Volume.reset (new Slider ("OSC1_Volume"));
-    addAndMakeVisible (m_OSC1_Volume.get());
-    m_OSC1_Volume->setRange (0, 1, 0);
-    m_OSC1_Volume->setSliderStyle (Slider::RotaryVerticalDrag);
-    m_OSC1_Volume->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSC_Volume.reset (new Slider ("OSC Volume"));
+    addAndMakeVisible (m_OSC_Volume.get());
+    m_OSC_Volume->setRange (0, 1, 0);
+    m_OSC_Volume->setSliderStyle (Slider::RotaryVerticalDrag);
+    m_OSC_Volume->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
 
-    m_OSC1_Volume->setBounds (40, 10, 75, 75);
+    m_OSC_Volume->setBounds (40, 10, 75, 75);
 
-    m_OSC1_Volume2.reset (new Slider ("OSC1_Volume"));
-    addAndMakeVisible (m_OSC1_Volume2.get());
-    m_OSC1_Volume2->setRange (0, 1, 0);
-    m_OSC1_Volume2->setSliderStyle (Slider::RotaryVerticalDrag);
-    m_OSC1_Volume2->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSC_Detune.reset (new Slider ("OSC Detune"));
+    addAndMakeVisible (m_OSC_Detune.get());
+    m_OSC_Detune->setRange (0, 1, 0);
+    m_OSC_Detune->setSliderStyle (Slider::RotaryVerticalDrag);
+    m_OSC_Detune->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
 
-    m_OSC1_Volume2->setBounds (152, 10, 75, 75);
+    m_OSC_Detune->setBounds (152, 10, 75, 75);
 
-    comboBox.reset (new ComboBox ("new combo box"));
-    addAndMakeVisible (comboBox.get());
-    comboBox->setEditableText (false);
-    comboBox->setJustificationType (Justification::centredLeft);
-    comboBox->setTextWhenNothingSelected (String());
-    comboBox->setTextWhenNoChoicesAvailable (TRANS("OSC off"));
-    comboBox->addItem (TRANS("Sine"), 1);
-    comboBox->addItem (TRANS("Square"), 2);
-    comboBox->addItem (TRANS("Triangle"), 3);
-    comboBox->addItem (TRANS("NES Triangle"), 4);
-    comboBox->addListener (this);
+    m_WaveForm_selctor.reset (new ComboBox ("Waveform Selector"));
+    addAndMakeVisible (m_WaveForm_selctor.get());
+    m_WaveForm_selctor->setEditableText (false);
+    m_WaveForm_selctor->setJustificationType (Justification::centredLeft);
+    m_WaveForm_selctor->setTextWhenNothingSelected (String());
+    m_WaveForm_selctor->setTextWhenNoChoicesAvailable (TRANS("OSC off"));
+    m_WaveForm_selctor->addItem (TRANS("Sine"), 1);
+    m_WaveForm_selctor->addItem (TRANS("Square"), 2);
+    m_WaveForm_selctor->addItem (TRANS("Triangle"), 3);
+    m_WaveForm_selctor->addItem (TRANS("NES Triangle"), 4);
+    m_WaveForm_selctor->addListener (this);
 
-    comboBox->setBounds (256, 40, 150, 24);
+    m_WaveForm_selctor->setBounds (256, 40, 150, 24);
 
 
     //[UserPreSize]
@@ -70,6 +70,20 @@ OSCcontrol::OSCcontrol ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    m_OSC_Volume->onValueChange = [this]() {
+        OSC_Volume = m_OSC_Volume->getValue();
+    };
+    m_OSC_Detune->onValueChange = [this]() {
+        OSC_Detune = m_OSC_Detune->getValue();
+    };
+    m_WaveForm_selctor->onChange = [this]() {
+        WaveformIndex = m_WaveForm_selctor->getSelectedItemIndex();
+    };
+
+
+
+
+
     //[/Constructor]
 }
 
@@ -78,9 +92,9 @@ OSCcontrol::~OSCcontrol()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    m_OSC1_Volume = nullptr;
-    m_OSC1_Volume2 = nullptr;
-    comboBox = nullptr;
+    m_OSC_Volume = nullptr;
+    m_OSC_Detune = nullptr;
+    m_WaveForm_selctor = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -149,10 +163,10 @@ void OSCcontrol::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     //[UsercomboBoxChanged_Pre]
     //[/UsercomboBoxChanged_Pre]
 
-    if (comboBoxThatHasChanged == comboBox.get())
+    if (comboBoxThatHasChanged == m_WaveForm_selctor.get())
     {
-        //[UserComboBoxCode_comboBox] -- add your combo box handling code here..
-        //[/UserComboBoxCode_comboBox]
+        //[UserComboBoxCode_m_WaveForm_selctor] -- add your combo box handling code here..
+        //[/UserComboBoxCode_m_WaveForm_selctor]
     }
 
     //[UsercomboBoxChanged_Post]
@@ -189,17 +203,17 @@ BEGIN_JUCER_METADATA
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
-  <SLIDER name="OSC1_Volume" id="27c5e9cffffc8a85" memberName="m_OSC1_Volume"
+  <SLIDER name="OSC Volume" id="27c5e9cffffc8a85" memberName="m_OSC_Volume"
           virtualName="" explicitFocusOrder="0" pos="40 10 75 75" min="0.0"
           max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
-  <SLIDER name="OSC1_Volume" id="580d060b041dc1b9" memberName="m_OSC1_Volume2"
+  <SLIDER name="OSC Detune" id="580d060b041dc1b9" memberName="m_OSC_Detune"
           virtualName="" explicitFocusOrder="0" pos="152 10 75 75" min="0.0"
           max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
-  <COMBOBOX name="new combo box" id="171c38ddab1a8569" memberName="comboBox"
+  <COMBOBOX name="Waveform Selector" id="171c38ddab1a8569" memberName="m_WaveForm_selctor"
             virtualName="" explicitFocusOrder="0" pos="256 40 150 24" editable="0"
             layout="33" items="Sine&#10;Square&#10;Triangle&#10;NES Triangle"
             textWhenNonSelected="" textWhenNoItems="OSC off"/>

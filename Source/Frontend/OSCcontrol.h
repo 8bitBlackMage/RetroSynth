@@ -43,6 +43,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    double OSC_Volume;
+    double OSC_Detune;
+    int WaveformIndex;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -53,12 +56,13 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Slider> m_OSC1_Volume;
-    std::unique_ptr<Slider> m_OSC1_Volume2;
-    std::unique_ptr<ComboBox> comboBox;
+    std::unique_ptr<Slider> m_OSC_Volume;
+    std::unique_ptr<Slider> m_OSC_Detune;
+    std::unique_ptr<ComboBox> m_WaveForm_selctor;
 
 
     //==============================================================================
