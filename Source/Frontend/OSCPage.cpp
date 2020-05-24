@@ -49,6 +49,7 @@ OSCPage::OSCPage ()
     m_OSCMixer->setRange (0, 10, 0);
     m_OSCMixer->setSliderStyle (Slider::RotaryVerticalDrag);
     m_OSCMixer->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSCMixer->setColour (Slider::thumbColourId, Colour (0xff164f71));
 
     m_OSCMixer->setBounds (680, 104, 150, 150);
 
@@ -56,7 +57,7 @@ OSCPage::OSCPage ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (1024, 768);
+    setSize (640, 768);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -85,7 +86,7 @@ void OSCPage::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff505050));
+    g.fillAll (Colour (0xff605f5e));
 
     {
         int x = 660, y = 252, width = 200, height = 30;
@@ -130,8 +131,8 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="OSCPage" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="1024" initialHeight="768">
-  <BACKGROUND backgroundColour="ff505050">
+                 fixedSize="0" initialWidth="640" initialHeight="768">
+  <BACKGROUND backgroundColour="ff605f5e">
     <TEXT pos="660 252 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Mixer"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
@@ -143,8 +144,8 @@ BEGIN_JUCER_METADATA
                     virtualName="" explicitFocusOrder="0" pos="8 192 640 150" class="OSCcontrol"
                     params=""/>
   <SLIDER name="new slider" id="e6e4e8161ac40fd1" memberName="m_OSCMixer"
-          virtualName="" explicitFocusOrder="0" pos="680 104 150 150" min="0.0"
-          max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="680 104 150 150" thumbcol="ff164f71"
+          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
 </JUCER_COMPONENT>

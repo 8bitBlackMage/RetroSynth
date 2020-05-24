@@ -37,6 +37,7 @@ OSCcontrol::OSCcontrol ()
     m_OSC_Volume->setRange (0, 1, 0);
     m_OSC_Volume->setSliderStyle (Slider::RotaryVerticalDrag);
     m_OSC_Volume->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSC_Volume->setColour (Slider::thumbColourId, Colour (0xff164f71));
 
     m_OSC_Volume->setBounds (40, 10, 75, 75);
 
@@ -45,6 +46,7 @@ OSCcontrol::OSCcontrol ()
     m_OSC_Detune->setRange (0, 1, 0);
     m_OSC_Detune->setSliderStyle (Slider::RotaryVerticalDrag);
     m_OSC_Detune->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSC_Detune->setColour (Slider::thumbColourId, Colour (0xff164f71));
 
     m_OSC_Detune->setBounds (152, 10, 75, 75);
 
@@ -107,7 +109,7 @@ void OSCcontrol::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff505050));
+    g.fillAll (Colour (0xff605f5e));
 
     {
         int x = -20, y = 84, width = 200, height = 30;
@@ -192,7 +194,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="640" initialHeight="150">
-  <BACKGROUND backgroundColour="ff505050">
+  <BACKGROUND backgroundColour="ff605f5e">
     <TEXT pos="-20 84 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Volume"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
@@ -204,13 +206,13 @@ BEGIN_JUCER_METADATA
           italic="0" justification="36"/>
   </BACKGROUND>
   <SLIDER name="OSC Volume" id="27c5e9cffffc8a85" memberName="m_OSC_Volume"
-          virtualName="" explicitFocusOrder="0" pos="40 10 75 75" min="0.0"
-          max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="40 10 75 75" thumbcol="ff164f71"
+          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <SLIDER name="OSC Detune" id="580d060b041dc1b9" memberName="m_OSC_Detune"
-          virtualName="" explicitFocusOrder="0" pos="152 10 75 75" min="0.0"
-          max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="152 10 75 75" thumbcol="ff164f71"
+          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <COMBOBOX name="Waveform Selector" id="171c38ddab1a8569" memberName="m_WaveForm_selctor"

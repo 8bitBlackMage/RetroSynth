@@ -37,6 +37,5 @@ public:
 private:
     t Signum(t value) {
         return (t(0) < value) - (value < t(0));
-        return (t(0) < value) - (value < t(0));
     }
 };

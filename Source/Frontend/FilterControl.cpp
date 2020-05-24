@@ -37,6 +37,7 @@ FilterControl::FilterControl ()
     m_VCF_Cutoff->setRange (0, 10, 0);
     m_VCF_Cutoff->setSliderStyle (Slider::RotaryVerticalDrag);
     m_VCF_Cutoff->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_VCF_Cutoff->setColour (Slider::thumbColourId, Colour (0xfffb3640));
     m_VCF_Cutoff->addListener (this);
 
     m_VCF_Cutoff->setBounds (40, 10, 75, 75);
@@ -46,6 +47,7 @@ FilterControl::FilterControl ()
     m_VCF_Res->setRange (0, 10, 0);
     m_VCF_Res->setSliderStyle (Slider::RotaryVerticalDrag);
     m_VCF_Res->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_VCF_Res->setColour (Slider::thumbColourId, Colour (0xfffb3640));
     m_VCF_Res->addListener (this);
 
     m_VCF_Res->setBounds (152, 10, 75, 75);
@@ -71,6 +73,15 @@ FilterControl::FilterControl ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    m_VCF_Cutoff->onValueChange = [this]() {
+        VCF_Cutoff = m_VCF_Cutoff->getValue();
+    };
+    m_VCF_Res->onValueChange = [this]() {
+        VCF_Res = m_VCF_Res->getValue();
+    };
+    comboBox->onChange = [this]() {
+        FilterType = comboBox->getSelectedId();
+    };
     //[/Constructor]
 }
 
@@ -94,7 +105,7 @@ void FilterControl::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff505050));
+    g.fillAll (Colour (0xff605f5e));
 
     {
         int x = -20, y = 84, width = 200, height = 30;
@@ -199,7 +210,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="640" initialHeight="150">
-  <BACKGROUND backgroundColour="ff505050">
+  <BACKGROUND backgroundColour="ff605f5e">
     <TEXT pos="-20 84 200 30" fill="solid: ffffffff" hasStroke="0" text="Cutoff"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
@@ -211,13 +222,13 @@ BEGIN_JUCER_METADATA
           italic="0" justification="36"/>
   </BACKGROUND>
   <SLIDER name="VCF Cutoff" id="1be29174ea790e31" memberName="m_VCF_Cutoff"
-          virtualName="" explicitFocusOrder="0" pos="40 10 75 75" min="0.0"
-          max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="40 10 75 75" thumbcol="fffb3640"
+          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="VCF Resonance" id="6dcbc1d4b225705f" memberName="m_VCF_Res"
-          virtualName="" explicitFocusOrder="0" pos="152 10 75 75" min="0.0"
-          max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          virtualName="" explicitFocusOrder="0" pos="152 10 75 75" thumbcol="fffb3640"
+          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <COMBOBOX name="new combo box" id="afaceff72b2c552c" memberName="comboBox"

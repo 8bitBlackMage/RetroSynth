@@ -26,5 +26,8 @@ public:
 private:
     MidiKeyboardState& m_keystate;
     Synthesiser m_synth;
-    WaveVoicePulse<float> m_WaveTable;
+    WaveVoicePulse<float> m_WaveTable_Pulse;
+    WaveVoiceNesTri<float>m_WaveTable_NesTri;
+    WaveVoiceTri<float>m_WaveTable_Tri;
+    WaveVoiceSine<float>m_Wavetable_sine;
 };

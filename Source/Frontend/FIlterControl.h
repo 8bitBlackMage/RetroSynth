@@ -44,6 +44,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    double VCF_Cutoff;
+    double VCF_Res;
+    int FilterType;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
