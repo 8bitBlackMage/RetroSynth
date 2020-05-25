@@ -22,8 +22,8 @@ public:
     void prepareToPlay(int /*SamplesPerBlockExpected*/, double SampleRate) override;
     void releaseResources() override;
     void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
-    void HandleFilterValues();
-    void HandleOSCValues();
+    void HandleFilterValues(int FilterNumber, double Cutoff,double Res, int FilterType);
+    void HandleOSCValues(int OSCNumber, double detune, double Volume, int voiceType);
     void HandleADSRValues(ADSR::Parameters* ampEnvelope, ADSR::Parameters* filterEnvelope);
 private:
     int m_voicenumber;

@@ -14,19 +14,19 @@
 template <typename t>
 class WaveVoiceTri : public Wavetable<t> {
 public:
-    WaveVoiceTri(size_t size): Wavetable(size) {
+    WaveVoiceTri(size_t size): Wavetable<t>(size) {
 
     }
 
     void CreateTable(size_t size) override
     {
-        m_audioBufferSize = size;
-        m_audioBuffer = std::vector<t>(size);
+        Wavetable<t>::m_audioBufferSize = size;
+        Wavetable<t>::m_audioBuffer = std::vector<t>(size);
         t incriment =  1.0f / size;
         t sample = 0.0f;
         for (int i = 0; i < size; i++)
         {
-            m_audioBuffer.at(i) = ((sample *2.0f) - 0.5f);
+            Wavetable<t>::m_audioBuffer.at(i) = ((sample *2.0f) - 0.5f);
             if (i < size * 0.5f)
             {
                 sample += incriment;

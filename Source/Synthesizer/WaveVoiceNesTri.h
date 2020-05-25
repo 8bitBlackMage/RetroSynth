@@ -16,10 +16,11 @@ template<typename t>
 class  WaveVoiceNesTri : public Wavetable<t> {
 public:
     WaveVoiceNesTri(size_t size = 44100):Wavetable<t>(size) {}
+    
     void CreateTable(size_t size) override
     {
-        m_audioBufferSize = size;
-        m_audioBuffer = std::vector<t>(size);
+        Wavetable<t>::m_audioBufferSize = size;
+        Wavetable<t>::m_audioBuffer = std::vector<t>(size);
         //Nes Triangle wave is a 32 step 4 bit wave due to being produced by a shift register
         double StepSize = size / 32;
         t incriment = 1.0f / 16.0f;
@@ -28,7 +29,7 @@ public:
           //  DBG(i);
             for (size_t Inc2 = 0; Inc2 < (StepSize); Inc2++)
             {
-                m_audioBuffer.at(Inc2 + (i * StepSize)) = (Sample * 2.0f) - 1.0f;
+                Wavetable<t>::m_audioBuffer.at(Inc2 + (i * StepSize)) = (Sample * 2.0f) - 1.0f;
             }
 
             if (i < 16) {

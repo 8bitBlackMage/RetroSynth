@@ -85,7 +85,17 @@ class LowPass : public Biquad<t>
 {
 public:
 
-	LowPass(t cutoff, t res, t samplerate, t dbgain) :Biquad(cutoff, res, samplerate, dbgain) {
+    using Biquad<t>::a; 
+    using Biquad<t>::b; 
+    using Biquad<t>::alpha;
+    using Biquad<t>::omega;
+    using Biquad<t>::xi1; 
+    using Biquad<t>::xi2; 
+    using Biquad<t>::yi1; 
+    using Biquad<t>::yi2; 
+ 
+
+	LowPass(t cutoff, t res, t samplerate, t dbgain) :Biquad<t>(cutoff, res, samplerate, dbgain) {
 
 		b[0] = (1 - cos(omega)) / 2;
 		b[1] = 1 - cos(omega);
@@ -115,8 +125,19 @@ template <typename t>
 class HighPass : public Biquad<t>
 {
 public:
+
+    using Biquad<t>::a; 
+    using Biquad<t>::b; 
+    using Biquad<t>::alpha;
+    using Biquad<t>::omega;
+    using Biquad<t>::xi1; 
+    using Biquad<t>::xi2; 
+    using Biquad<t>::yi1; 
+    using Biquad<t>::yi2; 
+
+
 	HighPass() {}
-	HighPass(t cutoff, t res, t samplerate, t dbgain) :Biquad(cutoff, res, samplerate, dbgain) {
+	HighPass(t cutoff, t res, t samplerate, t dbgain) :Biquad<t>(cutoff, res, samplerate, dbgain) {
 		b[0] = (1 + cos(omega)) / 2;
 		b[1] = -(1 + cos(omega));
 		b[2] = (1 + cos(omega)) / 2;

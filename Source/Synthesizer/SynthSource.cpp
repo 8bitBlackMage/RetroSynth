@@ -53,7 +53,9 @@ void RetroSynthAudioSource::HandleADSRValues(ADSR::Parameters *ampEnvelope, ADSR
         for (int i = 0; i < m_synth.getNumVoices(); i++)
         {
             DBG(i);
-            dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i))->m_Envelope.setParameters(*ampEnvelope);
+            RetroSynthVoice* Voice = dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i));
+            Voice->m_Envelope.setParameters(*ampEnvelope);
+            Voice = nullptr;
         }
     }
 }
