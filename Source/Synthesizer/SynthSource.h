@@ -22,7 +22,7 @@ public:
     void prepareToPlay(int /*SamplesPerBlockExpected*/, double SampleRate) override;
     void releaseResources() override;
     void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
-    void HandleFilterValues(int FilterNumber, double Cutoff,double Res, int FilterType);
+    void HandleFilterValues(int FilterNumber, float* Cutoff,float* Res, int* FilterType);
     void HandleOSCValues(int OSCNumber, double detune, double Volume, int voiceType);
     void HandleADSRValues(ADSR::Parameters* ampEnvelope, ADSR::Parameters* filterEnvelope);
 private:
@@ -32,5 +32,5 @@ private:
     WaveVoicePulse<float> m_WaveTable_Pulse;
     WaveVoiceNesTri<float>m_WaveTable_NesTri;
     WaveVoiceTri<float>m_WaveTable_Tri;
-    WaveVoiceSine<float>m_Wavetable_sine;
+    WaveVoiceSine<float>m_WaveTable_sine;
 };

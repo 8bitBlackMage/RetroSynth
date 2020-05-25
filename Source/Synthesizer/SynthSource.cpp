@@ -11,7 +11,7 @@
 #include "SynthSource.h"
 #include "SynthSound.h"
 
-RetroSynthAudioSource::RetroSynthAudioSource(MidiKeyboardState& keystate, int voiceNumber):m_keystate(keystate), m_voicenumber(voiceNumber),m_WaveTable_NesTri(44100), m_WaveTable_Pulse(44100),m_Wavetable_sine(44100),m_WaveTable_Tri(44100)
+RetroSynthAudioSource::RetroSynthAudioSource(MidiKeyboardState& keystate, int voiceNumber):m_keystate(keystate), m_voicenumber(voiceNumber),m_WaveTable_NesTri(44100), m_WaveTable_Pulse(44100),m_WaveTable_sine(44100),m_WaveTable_Tri(44100)
 {
     for (int i = 0; i < m_voicenumber; i++)
     {
@@ -25,7 +25,7 @@ void RetroSynthAudioSource::prepareToPlay(int, double SampleRate)
     m_WaveTable_NesTri.CreateTable(SampleRate);
     m_WaveTable_Pulse.CreateTable(SampleRate);
     m_WaveTable_Tri.CreateTable(SampleRate);
-    m_Wavetable_sine.CreateTable(SampleRate);
+    m_WaveTable_sine.CreateTable(SampleRate);
     m_synth.setCurrentPlaybackSampleRate(SampleRate);
     for (int i = 0; i < m_voicenumber; i++) {
         m_synth.getVoice(i)->setCurrentPlaybackSampleRate(SampleRate);
@@ -47,12 +47,51 @@ void RetroSynthAudioSource::getNextAudioBlock(const AudioSourceChannelInfo& buff
 
 }
 
+void RetroSynthAudioSource::HandleFilterValues(int FilterNumber, float* Cutoff, float* Res, int* FilterType)
+{
+    if (Cutoff != nullptr && Res != nullptr && FilterType != nullptr)
+    {
+        for (int i = 0; i < m_synth.getNumVoices(); i++) {
+            RetroSynthVoice* Voice = dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i));
+            if (FilterNumber == 0) {
+                Voice->m_FilterA.ChangeFreq(*Cutoff);
+                Voice->m_FilterA.changeRes(*Res);
+                Voice->m_FilterA.changeVal();
+                if (*FilterType == 1)
+                {
+               //     Voice->m_FilterA = &LowPass<float>(*Cutoff, *Res, Voice->getSampleRate(), 0.3);
+                }
+                if (*FilterType == 2)
+                {
+                //    Voice->m_FilterA = &HighPass<float>(*Cutoff, *Res, Voice->getSampleRate(), 0.3);
+                }
+            }
+            if (FilterNumber == 1) {
+                Voice->m_FilterB.ChangeFreq(*Cutoff);
+                Voice->m_FilterB.changeRes(*Res);
+                if (*FilterType == 1)
+                {
+                //    Voice->m_FilterB = &LowPass<float>(*Cutoff, *Res, Voice->getSampleRate(), 0.3);
+                }
+                if (*FilterType == 2)
+                {
+                //    Voice->m_FilterB = &HighPass<float>(*Cutoff, *Res, Voice->getSampleRate(), 0.3);
+                }
+            }
+        }
+    }
+}
+
+void RetroSynthAudioSource::HandleOSCValues(int OSCNumber, double detune, double Volume, int voiceType)
+{
+}
+
 void RetroSynthAudioSource::HandleADSRValues(ADSR::Parameters *ampEnvelope, ADSR::Parameters *filterEnvelope)
 {
     if (ampEnvelope != nullptr && filterEnvelope != nullptr) {
         for (int i = 0; i < m_synth.getNumVoices(); i++)
         {
-            DBG(i);
+
             RetroSynthVoice* Voice = dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i));
             Voice->m_Envelope.setParameters(*ampEnvelope);
             Voice = nullptr;

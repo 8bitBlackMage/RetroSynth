@@ -34,7 +34,7 @@ FilterControl::FilterControl ()
 
     m_VCF_Cutoff.reset (new Slider ("VCF Cutoff"));
     addAndMakeVisible (m_VCF_Cutoff.get());
-    m_VCF_Cutoff->setRange (0, 10, 0);
+    m_VCF_Cutoff->setRange (0, 20000, 0);
     m_VCF_Cutoff->setSliderStyle (Slider::RotaryVerticalDrag);
     m_VCF_Cutoff->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
     m_VCF_Cutoff->setColour (Slider::thumbColourId, Colour (0xfffb3640));
@@ -60,7 +60,7 @@ FilterControl::FilterControl ()
     comboBox->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
     comboBox->addItem (TRANS("Lowpass"), 1);
     comboBox->addItem (TRANS("Highpass"), 2);
-    comboBox->addItem (TRANS("Bandpass"), 3);
+    comboBox->addSeparator();
     comboBox->addListener (this);
 
     comboBox->setBounds (256, 40, 150, 24);
@@ -223,9 +223,9 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <SLIDER name="VCF Cutoff" id="1be29174ea790e31" memberName="m_VCF_Cutoff"
           virtualName="" explicitFocusOrder="0" pos="40 10 75 75" thumbcol="fffb3640"
-          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
-          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="1"/>
+          min="0.0" max="20000.0" int="0.0" style="RotaryVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="VCF Resonance" id="6dcbc1d4b225705f" memberName="m_VCF_Res"
           virtualName="" explicitFocusOrder="0" pos="152 10 75 75" thumbcol="fffb3640"
           min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
@@ -233,7 +233,7 @@ BEGIN_JUCER_METADATA
           needsCallback="1"/>
   <COMBOBOX name="new combo box" id="afaceff72b2c552c" memberName="comboBox"
             virtualName="" explicitFocusOrder="0" pos="256 40 150 24" editable="0"
-            layout="33" items="Lowpass&#10;Highpass&#10;Bandpass" textWhenNonSelected=""
+            layout="33" items="Lowpass&#10;Highpass&#10;" textWhenNonSelected=""
             textWhenNoItems="(no choices)"/>
 </JUCER_COMPONENT>
 

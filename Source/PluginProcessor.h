@@ -61,11 +61,11 @@ public:
     int* m_FilterMode = nullptr;
 
 
-    double* m_VCF1_Cutoff = nullptr;
-    double* m_VCF1_Res = nullptr;
+    float* m_VCF1_Cutoff = nullptr;
+    float* m_VCF1_Res = nullptr;
     int* m_Filter1Type = nullptr;
-    double* m_VCF2_Cutoff = nullptr;
-    double* m_VCF2_Res = nullptr;
+    float* m_VCF2_Cutoff = nullptr;
+    float* m_VCF2_Res = nullptr;
     int* m_Filter2Type = nullptr;
     double* m_FilterEnvelope = nullptr;
 

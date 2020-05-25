@@ -147,8 +147,12 @@ void RetroSynthAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuf
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     AudioSourceChannelInfo bufferWrapper(&buffer, 0, buffer.getNumSamples());
-  //  m_keystate.processNextMidiBuffer(midiMessages, bufferWrapper.startSample, bufferWrapper.numSamples, true);
+
     m_synth.HandleADSRValues(m_AmpPerameters, m_FilterPerameters);
+    m_synth.HandleFilterValues(0, m_VCF1_Cutoff, m_VCF1_Res, m_Filter1Type);
+  //  m_synth.HandleFilterValues(1, m_VCF2_Cutoff, m_VCF2_Res, m_Filter2Type);
+
+
     m_synth.getNextAudioBlock(bufferWrapper);
 }
 

@@ -44,8 +44,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    double VCF_Cutoff;
-    double VCF_Res;
+    float VCF_Cutoff;
+    float VCF_Res;
     int FilterType;
     //[/UserMethods]
 

@@ -30,7 +30,8 @@ public:
     RetroSynthPhasor m_Phasor;
     Wavetable<float>* m_Wavetable;
     ADSR m_Envelope;
-    LowPass<float> m_Filter;
+    LowPass<float> m_FilterA;
+    LowPass<float> m_FilterB;
 
 private:
 
