@@ -32,18 +32,18 @@ OSCcontrol::OSCcontrol ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    m_OSC_Volume.reset (new Slider ("OSC Volume"));
-    addAndMakeVisible (m_OSC_Volume.get());
-    m_OSC_Volume->setRange (0, 1, 0);
-    m_OSC_Volume->setSliderStyle (Slider::RotaryVerticalDrag);
-    m_OSC_Volume->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
-    m_OSC_Volume->setColour (Slider::thumbColourId, Colour (0xff164f71));
+    m_OSC_Freq.reset (new Slider ("OSC Volume"));
+    addAndMakeVisible (m_OSC_Freq.get());
+    m_OSC_Freq->setRange (-12, 12, 1);
+    m_OSC_Freq->setSliderStyle (Slider::RotaryVerticalDrag);
+    m_OSC_Freq->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
+    m_OSC_Freq->setColour (Slider::thumbColourId, Colour (0xff164f71));
 
-    m_OSC_Volume->setBounds (40, 10, 75, 75);
+    m_OSC_Freq->setBounds (40, 10, 75, 75);
 
     m_OSC_Detune.reset (new Slider ("OSC Detune"));
     addAndMakeVisible (m_OSC_Detune.get());
-    m_OSC_Detune->setRange (0, 1, 0);
+    m_OSC_Detune->setRange (-5, 5, 0);
     m_OSC_Detune->setSliderStyle (Slider::RotaryVerticalDrag);
     m_OSC_Detune->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
     m_OSC_Detune->setColour (Slider::thumbColourId, Colour (0xff164f71));
@@ -72,14 +72,14 @@ OSCcontrol::OSCcontrol ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    m_OSC_Volume->onValueChange = [this]() {
-        OSC_Volume = m_OSC_Volume->getValue();
+    m_OSC_Freq->onValueChange = [this]() {
+        OSC_FrequencyMod = m_OSC_Freq->getValue();
     };
     m_OSC_Detune->onValueChange = [this]() {
         OSC_Detune = m_OSC_Detune->getValue();
     };
     m_WaveForm_selctor->onChange = [this]() {
-        WaveformIndex = m_WaveForm_selctor->getSelectedItemIndex();
+        WaveformIndex = m_WaveForm_selctor->getSelectedId();
     };
 
 
@@ -94,7 +94,7 @@ OSCcontrol::~OSCcontrol()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    m_OSC_Volume = nullptr;
+    m_OSC_Freq = nullptr;
     m_OSC_Detune = nullptr;
     m_WaveForm_selctor = nullptr;
 
@@ -113,7 +113,7 @@ void OSCcontrol::paint (Graphics& g)
 
     {
         int x = -20, y = 84, width = 200, height = 30;
-        String text (TRANS("OSC Volume"));
+        String text (TRANS("OSC Frequency"));
         Colour fillColour = Colours::white;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -195,7 +195,7 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="640" initialHeight="150">
   <BACKGROUND backgroundColour="ff605f5e">
-    <TEXT pos="-20 84 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Volume"
+    <TEXT pos="-20 84 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Frequency"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
     <TEXT pos="92 84 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Detune"
@@ -205,14 +205,14 @@ BEGIN_JUCER_METADATA
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
-  <SLIDER name="OSC Volume" id="27c5e9cffffc8a85" memberName="m_OSC_Volume"
+  <SLIDER name="OSC Volume" id="27c5e9cffffc8a85" memberName="m_OSC_Freq"
           virtualName="" explicitFocusOrder="0" pos="40 10 75 75" thumbcol="ff164f71"
-          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          min="-12.0" max="12.0" int="1.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <SLIDER name="OSC Detune" id="580d060b041dc1b9" memberName="m_OSC_Detune"
           virtualName="" explicitFocusOrder="0" pos="152 10 75 75" thumbcol="ff164f71"
-          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          min="-5.0" max="5.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <COMBOBOX name="Waveform Selector" id="171c38ddab1a8569" memberName="m_WaveForm_selctor"

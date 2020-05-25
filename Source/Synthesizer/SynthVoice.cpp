@@ -26,12 +26,17 @@ bool RetroSynthVoice::canPlaySound(SynthesiserSound* sound)
 
 void RetroSynthVoice::startNote(int MidiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition)
 {
-    auto cyclesPerSecond = MidiMessage::getMidiNoteInHertz(MidiNoteNumber);
-    if (DetuneA > 0) {
-        m_PhasorA.setFrequency(cyclesPerSecond + DetuneA);
-    }
-    m_PhasorA.setFrequency(cyclesPerSecond);
-    DBG(m_PhasorA.getFreq());
+    auto cyclesPerSecondA = MidiMessage::getMidiNoteInHertz(MidiNoteNumber + FreqModA);
+
+    auto cyclesPerSecondB = MidiMessage::getMidiNoteInHertz(MidiNoteNumber + FreqModB);
+    
+        m_PhasorA.setFrequency(cyclesPerSecondA + DetuneA);
+                         
+        m_PhasorB.setFrequency(cyclesPerSecondB + DetuneB);
+
+
+
+
     m_Envelope.noteOn();
 }
 
@@ -44,6 +49,7 @@ void RetroSynthVoice::stopNote(float Veclocity, bool AllowTailOff)
 void RetroSynthVoice::setCurrentPlaybackSampleRate(double samplerate)
 {
     m_PhasorA.setSampleRate(samplerate);
+    m_PhasorB.setSampleRate(samplerate);
     m_FilterA->resetsamplerate(samplerate);
     m_FilterB->resetsamplerate(samplerate);
 }
@@ -64,9 +70,11 @@ void RetroSynthVoice::renderNextBlock(AudioBuffer<float>& outputBuffer, int star
     for (int i = 0; i < numSamples; i++)
     {
         float sample = m_WavetableA->getSample(m_PhasorA.getPhase() * m_WavetableA->getSize())   ;
+        sample += (m_WavetableB->getSample(m_PhasorB.getPhase() * m_WavetableB->getSize()) * OSCB_Blend);
         sample = m_FilterA->process_samples(sample);
         sample = m_FilterB->process_samples(sample);
         m_PhasorA.tick();
+        m_PhasorB.tick();
         left[i] += sample;
         right[i] += sample;
     }

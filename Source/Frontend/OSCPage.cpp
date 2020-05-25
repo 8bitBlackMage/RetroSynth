@@ -46,7 +46,7 @@ OSCPage::OSCPage ()
 
     m_OSCMixer.reset (new Slider ("new slider"));
     addAndMakeVisible (m_OSCMixer.get());
-    m_OSCMixer->setRange (0, 10, 0);
+    m_OSCMixer->setRange (0, 1, 0);
     m_OSCMixer->setSliderStyle (Slider::RotaryVerticalDrag);
     m_OSCMixer->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
     m_OSCMixer->setColour (Slider::thumbColourId, Colour (0xff164f71));
@@ -90,7 +90,7 @@ void OSCPage::paint (Graphics& g)
 
     {
         int x = 660, y = 252, width = 200, height = 30;
-        String text (TRANS("OSC Mixer"));
+        String text (TRANS("OSC 2 Blend"));
         Colour fillColour = Colours::white;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -133,7 +133,7 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="640" initialHeight="768">
   <BACKGROUND backgroundColour="ff605f5e">
-    <TEXT pos="660 252 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC Mixer"
+    <TEXT pos="660 252 200 30" fill="solid: ffffffff" hasStroke="0" text="OSC 2 Blend"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
@@ -145,7 +145,7 @@ BEGIN_JUCER_METADATA
                     params=""/>
   <SLIDER name="new slider" id="e6e4e8161ac40fd1" memberName="m_OSCMixer"
           virtualName="" explicitFocusOrder="0" pos="680 104 150 150" thumbcol="ff164f71"
-          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
 </JUCER_COMPONENT>

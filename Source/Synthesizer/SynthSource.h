@@ -23,7 +23,7 @@ public:
     void releaseResources() override;
     void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
     void HandleFilterValues(int FilterNumber, float* Cutoff,float* Res, int* FilterType);
-    void HandleOSCValues(int OSCNumber, float* detune, float* Volume, int* voiceType);
+    void HandleOSCValues(int OSCNumber, float* detune, float* Volume, int* voiceType, float* OSCBlend);
     void HandleADSRValues(ADSR::Parameters* ampEnvelope, ADSR::Parameters* filterEnvelope);
 private:
     int m_voicenumber;

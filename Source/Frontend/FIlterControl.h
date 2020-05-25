@@ -34,7 +34,6 @@
                                                                     //[/Comments]
 */
 class FilterControl  : public Component,
-                       public Slider::Listener,
                        public ComboBox::Listener
 {
 public:
@@ -51,7 +50,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (Slider* sliderThatWasMoved) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 

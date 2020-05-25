@@ -34,8 +34,7 @@
                                                                     //[/Comments]
 */
 class ADSRPage  : public Component,
-                  public Slider::Listener,
-                  public ComboBox::Listener
+                  public Slider::Listener
 {
 public:
     //==============================================================================
@@ -52,7 +51,6 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 
 
@@ -63,7 +61,6 @@ private:
     //==============================================================================
     std::unique_ptr<Slider> m_amp_attack;
     std::unique_ptr<Slider> m_filter_attack;
-    std::unique_ptr<ComboBox> m_Number_of_Voices;
     std::unique_ptr<Slider> m_amp_decay;
     std::unique_ptr<Slider> m_amp_sustain;
     std::unique_ptr<Slider> m_amp_release;

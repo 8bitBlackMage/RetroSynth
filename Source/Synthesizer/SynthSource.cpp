@@ -35,7 +35,13 @@ void RetroSynthAudioSource::prepareToPlay(int, double SampleRate)
 
 void RetroSynthAudioSource::releaseResources()
 {
+    for (int i = 0; i < m_synth.getNumVoices(); i++) {
+        RetroSynthVoice* Voice = dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i));
 
+       delete Voice->m_FilterA;
+       delete Voice->m_FilterB;
+
+    }
 }
 
 void RetroSynthAudioSource::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)
@@ -92,21 +98,79 @@ void RetroSynthAudioSource::HandleFilterValues(int FilterNumber, float* Cutoff, 
     }
 }
 
-void RetroSynthAudioSource::HandleOSCValues(int OSCNumber, float* detune, float* Volume, int* voiceType)
+void RetroSynthAudioSource::HandleOSCValues(int OSCNumber, float* detune, float* FrequencyMod, int* voiceType, float* OSCBlend)
 {
-    if (detune != nullptr && Volume != nullptr && voiceType != nullptr)
+    
+    if (detune != nullptr && FrequencyMod != nullptr && voiceType != nullptr)
     {
-        for (int i = 0; i < m_synth.getNumVoices(); i++)
+               for (int i = 0; i < m_synth.getNumVoices(); i++)
         {
             RetroSynthVoice* Voice = dynamic_cast<RetroSynthVoice*>(m_synth.getVoice(i));
 
             if (OSCNumber == 1) {
-                Voice->m_PhasorA.setFrequency( (Voice->m_PhasorA.getFreq() + *detune));
-                Voice->DetuneA = *detune;
+                if (*detune < -5) *detune = 0;
+                if (Voice->DetuneA != *detune) {
+                    Voice->m_PhasorA.setFrequency((Voice->m_PhasorA.getFreq() + *detune));
+                    Voice->DetuneA = *detune;
+                }
+                if (*FrequencyMod < -12) *FrequencyMod = 0;
+                if (Voice->FreqModA != *FrequencyMod)
+                {
+                    
+                    Voice->m_PhasorA.setFrequency((Voice->m_PhasorA.getFreq() + MidiMessage::getMidiNoteInHertz(*FrequencyMod)));
+                    Voice->FreqModA = *FrequencyMod;
+                }
+                if (*voiceType == 1)
+                {
+                    Voice->m_WavetableA = &m_WaveTable_sine;
+                }
+                if (*voiceType == 2)
+                {
+                    Voice->m_WavetableA = &m_WaveTable_Pulse;
+                }
+                if (*voiceType == 3)
+                {
+                    Voice->m_WavetableA = &m_WaveTable_Tri;
+                }
+                if (*voiceType == 4)
+                {
+                    Voice->m_WavetableA = &m_WaveTable_NesTri;
+                }
+            }
+            if (OSCNumber == 2) {
+                if (*detune < -5) *detune = 0;
+                if (Voice->DetuneB != *detune) {
+                    Voice->m_PhasorB.setFrequency((Voice->m_PhasorB.getFreq() + *detune));
+                    Voice->DetuneB = *detune;
+                }
+                if (*FrequencyMod < -12) *FrequencyMod = 0;
+                if (Voice->FreqModB != *FrequencyMod)
+                {
+
+                    Voice->m_PhasorB.setFrequency((Voice->m_PhasorB.getFreq() + MidiMessage::getMidiNoteInHertz(*FrequencyMod)));
+                    Voice->FreqModB = *FrequencyMod;
+                }
+                if (*voiceType == 1)
+                {
+                    Voice->m_WavetableB = &m_WaveTable_sine;
+                }
+                if (*voiceType == 2)
+                {
+                    Voice->m_WavetableB = &m_WaveTable_Pulse;
+                }
+                if (*voiceType == 3)
+                {
+                    Voice->m_WavetableB = &m_WaveTable_Tri;
+                }
+                if (*voiceType == 4)
+                {
+                    Voice->m_WavetableB = &m_WaveTable_NesTri;
+                }
             }
 
 
-
+            if (*OSCBlend < 0) *OSCBlend = 0;
+            Voice->OSCB_Blend = *OSCBlend;
         }
     }
 }

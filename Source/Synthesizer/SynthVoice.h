@@ -39,6 +39,11 @@ public:
 
     float DetuneA;
     float DetuneB;
+    float FreqModA;
+    float FreqModB;
+
+
+    float OSCB_Blend;
 private:
 
 };

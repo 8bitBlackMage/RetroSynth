@@ -43,7 +43,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    float OSC_Volume;
+    float OSC_FrequencyMod;
     float OSC_Detune;
     int WaveformIndex;
     //[/UserMethods]
@@ -60,7 +60,7 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Slider> m_OSC_Volume;
+    std::unique_ptr<Slider> m_OSC_Freq;
     std::unique_ptr<Slider> m_OSC_Detune;
     std::unique_ptr<ComboBox> m_WaveForm_selctor;
 

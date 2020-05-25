@@ -38,14 +38,14 @@ RetroSynthAudioProcessorEditor::RetroSynthAudioProcessorEditor (RetroSynthAudioP
 
     p.m_FilterEnvelope = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->EnvelopeAmount;
 
-    p.m_OSC1_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Volume;
+    p.m_OSC1_FrequencyMod = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_FrequencyMod;
     p.m_OSC1_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Detune;
     p.m_Waveform1Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->WaveformIndex;
 
-    p.m_OSC2_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Volume;
+    p.m_OSC2_FrequencyMod = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_FrequencyMod;
     p.m_OSC2_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Detune;
     p.m_Waveform2Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->WaveformIndex;
-
+    p.m_OSC2_Vol = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->m_OSCMixerValue;
 
 }
 

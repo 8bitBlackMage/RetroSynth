@@ -49,10 +49,9 @@ public:
     OSCcontrol* getOSCcontrol2() {
         return m_OSCcontrol2.get();
     }
-    double getMixSliderValue()
-    {
-        return m_OSCMixerValue;
-    }
+
+
+    float m_OSCMixerValue;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -62,7 +61,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    double m_OSCMixerValue;
+
     //[/UserVariables]
 
     //==============================================================================

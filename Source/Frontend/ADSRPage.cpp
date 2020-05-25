@@ -52,22 +52,6 @@ ADSRPage::ADSRPage ()
 
     m_filter_attack->setBounds (150, 226, 150, 150);
 
-    m_Number_of_Voices.reset (new ComboBox ("number of voices"));
-    addAndMakeVisible (m_Number_of_Voices.get());
-    m_Number_of_Voices->setEditableText (false);
-    m_Number_of_Voices->setJustificationType (Justification::centredLeft);
-    m_Number_of_Voices->setTextWhenNothingSelected (String());
-    m_Number_of_Voices->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
-    m_Number_of_Voices->addItem (TRANS("1"), 1);
-    m_Number_of_Voices->addItem (TRANS("2"), 2);
-    m_Number_of_Voices->addItem (TRANS("3"), 3);
-    m_Number_of_Voices->addItem (TRANS("4"), 4);
-    m_Number_of_Voices->addItem (TRANS("5"), 5);
-    m_Number_of_Voices->addItem (TRANS("6"), 6);
-    m_Number_of_Voices->addListener (this);
-
-    m_Number_of_Voices->setBounds (832, 188, 150, 24);
-
     m_amp_decay.reset (new Slider ("amp decay"));
     addAndMakeVisible (m_amp_decay.get());
     m_amp_decay->setRange (0.1, 1, 0);
@@ -174,7 +158,6 @@ ADSRPage::~ADSRPage()
 
     m_amp_attack = nullptr;
     m_filter_attack = nullptr;
-    m_Number_of_Voices = nullptr;
     m_amp_decay = nullptr;
     m_amp_sustain = nullptr;
     m_amp_release = nullptr;
@@ -267,18 +250,6 @@ void ADSRPage::paint (Graphics& g)
                     Justification::centred, true);
     }
 
-    {
-        int x = 812, y = 148, width = 200, height = 30;
-        String text (TRANS("Number of Voices"));
-        Colour fillColour = Colours::white;
-        //[UserPaintCustomArguments] Customize the painting arguments here..
-        //[/UserPaintCustomArguments]
-        g.setColour (fillColour);
-        g.setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-        g.drawText (text, x, y, width, height,
-                    Justification::centred, true);
-    }
-
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -342,21 +313,6 @@ void ADSRPage::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-void ADSRPage::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
-{
-    //[UsercomboBoxChanged_Pre]
-    //[/UsercomboBoxChanged_Pre]
-
-    if (comboBoxThatHasChanged == m_Number_of_Voices.get())
-    {
-        //[UserComboBoxCode_m_Number_of_Voices] -- add your combo box handling code here..
-        //[/UserComboBoxCode_m_Number_of_Voices]
-    }
-
-    //[UsercomboBoxChanged_Post]
-    //[/UsercomboBoxChanged_Post]
-}
-
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
@@ -395,9 +351,6 @@ BEGIN_JUCER_METADATA
     <TEXT pos="580 188 200 30" fill="solid: ffffffff" hasStroke="0" text="Release"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
-    <TEXT pos="812 148 200 30" fill="solid: ffffffff" hasStroke="0" text="Number of Voices"
-          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
-          italic="0" justification="36"/>
   </BACKGROUND>
   <SLIDER name="amp attack" id="7306013f1a2ec368" memberName="m_amp_attack"
           virtualName="" explicitFocusOrder="0" pos="150 40 150 150" thumbcol="ff0a2463"
@@ -409,10 +362,6 @@ BEGIN_JUCER_METADATA
           min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
-  <COMBOBOX name="number of voices" id="dae203c108b40c94" memberName="m_Number_of_Voices"
-            virtualName="" explicitFocusOrder="0" pos="832 188 150 24" editable="0"
-            layout="33" items="1&#10;2&#10;3&#10;4&#10;5&#10;6" textWhenNonSelected=""
-            textWhenNoItems="(no choices)"/>
   <SLIDER name="amp decay" id="62644c62a89e36b6" memberName="m_amp_decay"
           virtualName="" explicitFocusOrder="0" pos="304 40 150 150" thumbcol="ff0a2463"
           min="0.1" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
