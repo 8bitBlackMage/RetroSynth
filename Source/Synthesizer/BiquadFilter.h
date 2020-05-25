@@ -28,14 +28,18 @@ public:
 		Calculate_intermediates(M_Cutoff, M_Res, M_samplerate, M_DBGain);
 	}
 	void ChangeFreq(t CutoffFreq) {
-		M_Cutoff = CutoffFreq;
-		Calculate_intermediates(M_Cutoff, M_Res, M_samplerate, M_DBGain);
-	//	changeVal();
+		if (M_Cutoff != CutoffFreq) {
+			M_Cutoff = CutoffFreq;
+			Calculate_intermediates(M_Cutoff, M_Res, M_samplerate, M_DBGain);
+		}
 	}
 	void changeRes(t Res) {
-		M_Res = Res;
-		//changeVal();
-		Calculate_intermediates(M_Cutoff, Res, M_samplerate, M_DBGain);
+
+		if (M_Res != Res) {
+			if (Res < 0.00001f) Res = 0.001f;
+			M_Res = Res;
+			Calculate_intermediates(M_Cutoff, Res, M_samplerate, M_DBGain);
+		}
 		
 	}
 	void changeGain(t gain) {
@@ -143,7 +147,7 @@ public:
 		b[2] = (1 + cos(omega)) / 2;
 
 		a[0] = 1 / (1 + alpha);
-		a[1] = 2 * cos(omega);
+		a[1] = 2 * cos(omega); 
 		a[2] = 1 - alpha;
 	}
 	void changeVal() override {

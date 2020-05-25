@@ -27,10 +27,11 @@ void RetroSynthPhasor::setSampleRate(double samplerate)
 
 void RetroSynthPhasor::setFrequency(double frequency)
 {
-    assert(frequency > 0.0);
-    m_frequency = frequency;
-    
-    m_phaseInc = m_frequency / m_sampleRate;
+    if (frequency > 0.0) {
+        m_frequency = frequency;
+        
+        m_phaseInc = m_frequency / m_sampleRate;
+    }
 }
 
 void RetroSynthPhasor::tick()

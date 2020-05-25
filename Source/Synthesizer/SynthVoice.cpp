@@ -13,9 +13,10 @@
 
 
 
-RetroSynthVoice::RetroSynthVoice(Wavetable<float>* wavetable, double sampleRate): m_Phasor(sampleRate), m_FilterA(800, 0.2, 44100, 0.3), m_FilterB(1000, 0.8, 44100,1.0)
+RetroSynthVoice::RetroSynthVoice(Wavetable<float>* wavetable, double sampleRate): m_PhasorA(sampleRate), m_FilterA( new LowPass<float>(800, 0.2, 44100, 0.3)), m_FilterB( new LowPass<float>(800, 0.2, 44100, 0.3))
 {
-    m_Wavetable = wavetable;
+    m_WavetableA = wavetable;
+    m_WavetableB = wavetable;
 }
 
 bool RetroSynthVoice::canPlaySound(SynthesiserSound* sound)
@@ -26,8 +27,11 @@ bool RetroSynthVoice::canPlaySound(SynthesiserSound* sound)
 void RetroSynthVoice::startNote(int MidiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition)
 {
     auto cyclesPerSecond = MidiMessage::getMidiNoteInHertz(MidiNoteNumber);
-    DBG("NOTEON");
-    m_Phasor.setFrequency(cyclesPerSecond);
+    if (DetuneA > 0) {
+        m_PhasorA.setFrequency(cyclesPerSecond + DetuneA);
+    }
+    m_PhasorA.setFrequency(cyclesPerSecond);
+    DBG(m_PhasorA.getFreq());
     m_Envelope.noteOn();
 }
 
@@ -39,9 +43,9 @@ void RetroSynthVoice::stopNote(float Veclocity, bool AllowTailOff)
 
 void RetroSynthVoice::setCurrentPlaybackSampleRate(double samplerate)
 {
-    m_Phasor.setSampleRate(samplerate);
-    m_FilterA.resetsamplerate(samplerate);
-    m_FilterB.resetsamplerate(samplerate);
+    m_PhasorA.setSampleRate(samplerate);
+    m_FilterA->resetsamplerate(samplerate);
+    m_FilterB->resetsamplerate(samplerate);
 }
 
 void RetroSynthVoice::pitchWheelMoved(int newValue)
@@ -59,10 +63,10 @@ void RetroSynthVoice::renderNextBlock(AudioBuffer<float>& outputBuffer, int star
     float* right = outputBuffer.getWritePointer(1);
     for (int i = 0; i < numSamples; i++)
     {
-        float sample = m_Wavetable->getSample(m_Phasor.getPhase() * m_Wavetable->getSize())   ;
-        sample = m_FilterA.process_samples(sample);
-       // sample = m_FilterB.process_samples(sample);
-        m_Phasor.tick();
+        float sample = m_WavetableA->getSample(m_PhasorA.getPhase() * m_WavetableA->getSize())   ;
+        sample = m_FilterA->process_samples(sample);
+        sample = m_FilterB->process_samples(sample);
+        m_PhasorA.tick();
         left[i] += sample;
         right[i] += sample;
     }

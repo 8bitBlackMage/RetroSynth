@@ -69,11 +69,11 @@ public:
     int* m_Filter2Type = nullptr;
     double* m_FilterEnvelope = nullptr;
 
-    double* m_OSC1_Volume = nullptr;
-    double* m_OSC1_Detune = nullptr;
+    float* m_OSC1_Volume = nullptr;
+    float* m_OSC1_Detune = nullptr;
     int* m_Waveform1Index = nullptr;
-    double* m_OSC2_Volume = nullptr;
-    double* m_OSC2_Detune = nullptr;;
+    float* m_OSC2_Volume = nullptr;
+    float* m_OSC2_Detune = nullptr;;
     int* m_Waveform2Index = nullptr;
 
 

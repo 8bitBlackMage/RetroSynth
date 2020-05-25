@@ -44,7 +44,7 @@ FilterControl::FilterControl ()
 
     m_VCF_Res.reset (new Slider ("VCF Resonance"));
     addAndMakeVisible (m_VCF_Res.get());
-    m_VCF_Res->setRange (0, 10, 0);
+    m_VCF_Res->setRange (0, 1, 0);
     m_VCF_Res->setSliderStyle (Slider::RotaryVerticalDrag);
     m_VCF_Res->setTextBoxStyle (Slider::NoTextBox, true, 80, 20);
     m_VCF_Res->setColour (Slider::thumbColourId, Colour (0xfffb3640));
@@ -228,7 +228,7 @@ BEGIN_JUCER_METADATA
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="VCF Resonance" id="6dcbc1d4b225705f" memberName="m_VCF_Res"
           virtualName="" explicitFocusOrder="0" pos="152 10 75 75" thumbcol="fffb3640"
-          min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
+          min="0.0" max="1.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <COMBOBOX name="new combo box" id="afaceff72b2c552c" memberName="comboBox"

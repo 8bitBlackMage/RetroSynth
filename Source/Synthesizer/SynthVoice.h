@@ -27,12 +27,18 @@ public:
     void controllerMoved(int controller, int newvalue) override;
     void renderNextBlock(AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;
 
-    RetroSynthPhasor m_Phasor;
-    Wavetable<float>* m_Wavetable;
+    RetroSynthPhasor m_PhasorA;
+    RetroSynthPhasor m_PhasorB;
+    Wavetable<float>* m_WavetableA;
+    Wavetable<float>* m_WavetableB;
     ADSR m_Envelope;
-    LowPass<float> m_FilterA;
-    LowPass<float> m_FilterB;
+    Biquad<float> *m_FilterA;
+    Biquad<float> *m_FilterB;
+    float VolumeA;
+    float VolumeB;
 
+    float DetuneA;
+    float DetuneB;
 private:
 
 };

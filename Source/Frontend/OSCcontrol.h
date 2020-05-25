@@ -43,8 +43,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    double OSC_Volume;
-    double OSC_Detune;
+    float OSC_Volume;
+    float OSC_Detune;
     int WaveformIndex;
     //[/UserMethods]
 

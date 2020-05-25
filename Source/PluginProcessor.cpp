@@ -150,8 +150,8 @@ void RetroSynthAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuf
 
     m_synth.HandleADSRValues(m_AmpPerameters, m_FilterPerameters);
     m_synth.HandleFilterValues(0, m_VCF1_Cutoff, m_VCF1_Res, m_Filter1Type);
-  //  m_synth.HandleFilterValues(1, m_VCF2_Cutoff, m_VCF2_Res, m_Filter2Type);
-
+    m_synth.HandleFilterValues(1, m_VCF2_Cutoff, m_VCF2_Res, m_Filter2Type);
+    m_synth.HandleOSCValues(0, m_OSC1_Detune, m_OSC1_Volume, m_Waveform1Index);
 
     m_synth.getNextAudioBlock(bufferWrapper);
 }

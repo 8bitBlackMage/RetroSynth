@@ -49,9 +49,9 @@ FilterPage::FilterPage ()
     m_FilterMode->setEditableText (false);
     m_FilterMode->setJustificationType (Justification::centredLeft);
     m_FilterMode->setTextWhenNothingSelected (String());
-    m_FilterMode->setTextWhenNoChoicesAvailable (String());
-    m_FilterMode->addItem (TRANS("Serial"), 1);
-    m_FilterMode->addItem (TRANS("parallel"), 2);
+    m_FilterMode->setTextWhenNoChoicesAvailable (TRANS("To be Implimented"));
+    m_FilterMode->addItem (TRANS("To be Implimented"), 1);
+    m_FilterMode->addSeparator();
     m_FilterMode->addListener (this);
 
     m_FilterMode->setBounds (664, 88, 150, 24);
@@ -133,6 +133,18 @@ void FilterPage::paint (Graphics& g)
                     Justification::centred, true);
     }
 
+    {
+        int x = 644, y = 188, width = 200, height = 30;
+        String text (TRANS("not yet implimented"));
+        Colour fillColour = Colours::white;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+        g.drawText (text, x, y, width, height,
+                    Justification::centred, true);
+    }
+
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -202,6 +214,9 @@ BEGIN_JUCER_METADATA
     <TEXT pos="636 292 200 30" fill="solid: ffffffff" hasStroke="0" text="Envelope amount"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
+    <TEXT pos="644 188 200 30" fill="solid: ffffffff" hasStroke="0" text="not yet implimented"
+          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+          italic="0" justification="36"/>
   </BACKGROUND>
   <GENERICCOMPONENT name="Filter Control 1 " id="b7530f29acbbacbd" memberName="m_FilterControl1"
                     virtualName="" explicitFocusOrder="0" pos="8 24 640 150" class="FilterControl"
@@ -211,8 +226,8 @@ BEGIN_JUCER_METADATA
                     params=""/>
   <COMBOBOX name="Filter Mode" id="217075eea1cef814" memberName="m_FilterMode"
             virtualName="" explicitFocusOrder="0" pos="664 88 150 24" editable="0"
-            layout="33" items="Serial&#10;parallel" textWhenNonSelected=""
-            textWhenNoItems=""/>
+            layout="33" items="To be Implimented&#10;" textWhenNonSelected=""
+            textWhenNoItems="To be Implimented"/>
   <SLIDER name="Envelope Amount" id="8668bccd0423e080" memberName="m_Envelope_Amount"
           virtualName="" explicitFocusOrder="0" pos="697 212 75 75" thumbcol="fffb3640"
           min="0.0" max="10.0" int="0.0" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
