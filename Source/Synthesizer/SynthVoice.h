@@ -26,9 +26,12 @@ public:
     void pitchWheelMoved(int newValue) override;
     void controllerMoved(int controller, int newvalue) override;
     void renderNextBlock(AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;
-private:
+
     RetroSynthPhasor m_Phasor;
     Wavetable<float>* m_Wavetable;
     ADSR m_Envelope;
     LowPass<float> m_Filter;
+
+private:
+
 };

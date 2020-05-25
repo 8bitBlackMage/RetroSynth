@@ -18,12 +18,15 @@
 
 class RetroSynthAudioSource : public AudioSource {
 public:
-    RetroSynthAudioSource(MidiKeyboardState& keystate);
+    RetroSynthAudioSource(MidiKeyboardState& keystate, int voiceNumber );
     void prepareToPlay(int /*SamplesPerBlockExpected*/, double SampleRate) override;
     void releaseResources() override;
     void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
-    
+    void HandleFilterValues();
+    void HandleOSCValues();
+    void HandleADSRValues(ADSR::Parameters* ampEnvelope, ADSR::Parameters* filterEnvelope);
 private:
+    int m_voicenumber;
     MidiKeyboardState& m_keystate;
     Synthesiser m_synth;
     WaveVoicePulse<float> m_WaveTable_Pulse;

@@ -55,6 +55,31 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     MidiKeyboardState m_keystate;
+
+    ADSR::Parameters* m_FilterPerameters = nullptr;
+    ADSR::Parameters* m_AmpPerameters = nullptr;
+    int* m_FilterMode = nullptr;
+
+
+    double* m_VCF1_Cutoff = nullptr;
+    double* m_VCF1_Res = nullptr;
+    int* m_Filter1Type = nullptr;
+    double* m_VCF2_Cutoff = nullptr;
+    double* m_VCF2_Res = nullptr;
+    int* m_Filter2Type = nullptr;
+    double* m_FilterEnvelope = nullptr;
+
+    double* m_OSC1_Volume = nullptr;
+    double* m_OSC1_Detune = nullptr;
+    int* m_Waveform1Index = nullptr;
+    double* m_OSC2_Volume = nullptr;
+    double* m_OSC2_Detune = nullptr;;
+    int* m_Waveform2Index = nullptr;
+
+
+
+
+
 private:
     //==============================================================================
    RetroSynthAudioSource m_synth;

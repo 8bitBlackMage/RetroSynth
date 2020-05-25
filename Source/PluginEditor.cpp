@@ -24,27 +24,27 @@ RetroSynthAudioProcessorEditor::RetroSynthAudioProcessorEditor (RetroSynthAudioP
     addAndMakeVisible(m_keyboardComponent);
     setSize (1024, 768);
 
-    m_FilterPerameters = &dynamic_cast<ADSRPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->filterPerams;
-    m_AmpPerameters = &dynamic_cast<ADSRPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->ampPerams;
-    m_FilterMode = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->FilterMode;
+    p.m_FilterPerameters = &dynamic_cast<ADSRPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->filterPerams;
+    p.m_AmpPerameters = &dynamic_cast<ADSRPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->ampPerams;
+    p.m_FilterMode = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->FilterMode;
     
-    m_VCF1_Cutoff = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->VCF_Cutoff;
-    m_VCF1_Res = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->VCF_Res;
-    m_Filter1Type = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->FilterType;
+    p.m_VCF1_Cutoff = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->VCF_Cutoff;
+    p.m_VCF1_Res = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->VCF_Res;
+    p.m_Filter1Type = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl1()->FilterType;
 
-    m_VCF2_Cutoff = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->VCF_Cutoff;
-    m_VCF2_Res = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->VCF_Res;
-    m_Filter2Type = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->FilterType;
+    p.m_VCF2_Cutoff = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->VCF_Cutoff;
+    p.m_VCF2_Res = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->VCF_Res;
+    p.m_Filter2Type = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(1))->GetFilterControl2()->FilterType;
 
-    m_FilterEnvelope = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->EnvelopeAmount;
+    p.m_FilterEnvelope = &dynamic_cast<FilterPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(2))->EnvelopeAmount;
 
-    m_OSC1_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Volume;
-    m_OSC1_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Detune;
-    m_Waveform1Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->WaveformIndex;
+    p.m_OSC1_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Volume;
+    p.m_OSC1_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->OSC_Detune;
+    p.m_Waveform1Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol1()->WaveformIndex;
 
-    m_OSC2_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Volume;
-    m_OSC2_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Detune;
-    m_Waveform2Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->WaveformIndex;
+    p.m_OSC2_Volume = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Volume;
+    p.m_OSC2_Detune = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->OSC_Detune;
+    p.m_Waveform2Index = &dynamic_cast<OSCPage*>(m_Controls.getTabbedComponent()->getTabContentComponent(0))->getOSCcontrol2()->WaveformIndex;
 
 
 }
@@ -57,7 +57,7 @@ RetroSynthAudioProcessorEditor::~RetroSynthAudioProcessorEditor()
 void RetroSynthAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-sss    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+   g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
     
 }

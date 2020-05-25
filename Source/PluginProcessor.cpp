@@ -23,7 +23,7 @@ RetroSynthAudioProcessor::RetroSynthAudioProcessor()
                      #endif
      )                
 #endif
-   ,m_synth(m_keystate)
+   ,m_synth(m_keystate, 2)
 {
 }
 
@@ -148,6 +148,7 @@ void RetroSynthAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuf
         buffer.clear (i, 0, buffer.getNumSamples());
     AudioSourceChannelInfo bufferWrapper(&buffer, 0, buffer.getNumSamples());
   //  m_keystate.processNextMidiBuffer(midiMessages, bufferWrapper.startSample, bufferWrapper.numSamples, true);
+    m_synth.HandleADSRValues(m_AmpPerameters, m_FilterPerameters);
     m_synth.getNextAudioBlock(bufferWrapper);
 }
 
