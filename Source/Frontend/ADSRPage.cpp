@@ -145,9 +145,7 @@ ADSRPage::ADSRPage ()
         filterPerams.release = m_filter_release->getValue();
     };
 
-    m_Number_of_Voices->onChange = [this]() {
-        numberOfVoices = m_Number_of_Voices->getSelectedId();
-    };
+
     //[/Constructor]
 }
 
